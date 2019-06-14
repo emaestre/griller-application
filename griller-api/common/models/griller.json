@@ -1,0 +1,58 @@
+{
+  "name": "Griller",
+  "plural": "Grills",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "grillerOwner": {
+      "type": "number",
+      "required": true
+    },
+    "reservedBy": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "model": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "isAvailable": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "bookingDate": {
+      "type": "date"
+    },
+    "reservedHours": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "client": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": "grillerOwner",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
