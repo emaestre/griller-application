@@ -4,7 +4,8 @@
   "base": "User",
   "idInjection": true,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": true,
+    "emailVerificationRequired": false
   },
   "properties": {
     "firstName": {
@@ -26,6 +27,10 @@
     "zipCode": {
       "type": "string",
       "required": true
+    },
+    "email": {
+      "type": "String",
+      "required": false
     }
   },
   "validations": [],
@@ -39,6 +44,51 @@
       }
     }
   },
-  "acls": [],
-  "methods": {}
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "clientLogin"
+    }
+  ],
+  "methods": {
+    "clientLogin": {
+      "accepts": [
+        {
+          "arg": "credentials",
+          "type": "object",
+          "required": true,
+          "description": "Username and password of the user.",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "include",
+          "type": "string",
+          "required": false,
+          "description": "Related objects to include in the response.",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "userToken",
+          "type": "object",
+          "root": true,
+          "description": "Object with the access token."
+        }
+      ],
+      "description": "Custom login remote method based in User.login ",
+      "http": [
+        {
+          "path": "/clientLogin",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

@@ -8,11 +8,11 @@
   },
   "properties": {
     "grillerOwner": {
-      "type": "number",
+      "type": "string",
       "required": true
     },
     "reservedBy": {
-      "type": "number"
+      "type": "string"
     },
     "name": {
       "type": "string",
@@ -53,6 +53,19 @@
       }
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }

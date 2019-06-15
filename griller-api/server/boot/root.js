@@ -8,6 +8,8 @@
 module.exports = function(server) {
   // Install a `/` route that returns server status
   var router = server.loopback.Router();
+
+  delete server.models.Client.validations.email; // Disable email validation/requirement for Client Users
   router.get('/', server.loopback.status());
   server.use(router);
 };
