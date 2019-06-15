@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {AppSettings} from '../config';
@@ -30,17 +29,8 @@ export class AuthenticationService {
     }
 
     logout() {
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type':  'application/json',
-              'Authorization': JSON.parse(localStorage.getItem('currentUser')).accessToken
-            })
-          };
-          
-        return this.http.post<any>(`${AppSettings.apiUrl}/Clients/logout`, {}, httpOptions)
-            .pipe(map(user => {
-                localStorage.removeItem('currentUser');
-                this.currentUserSubject.next(null);
-            }));
+        this.http.post<any>(`${AppSettings.apiUrl}/Clients/logout`, {});
+        localStorage.removeItem('currentUser');
+        this.currentUserSubject.next(null);
     }
 }
