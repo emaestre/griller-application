@@ -42,6 +42,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "bookings": {
+      "type": "hasMany",
+      "model": "Booking",
+      "foreignKey": "clientId",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [

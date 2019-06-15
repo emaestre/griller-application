@@ -47,5 +47,9 @@
   "CustomToken": {
     "dataSource": "mongoDb",
     "public": false
+  },
+  "Booking": {
+    "dataSource": "mongoDb",
+    "public": true
   }
 }

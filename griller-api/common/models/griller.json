@@ -34,12 +34,6 @@
       "type": "boolean",
       "required": true,
       "default": true
-    },
-    "bookingDate": {
-      "type": "date"
-    },
-    "reservedHours": {
-      "type": "number"
     }
   },
   "validations": [],

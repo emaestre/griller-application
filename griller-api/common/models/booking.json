@@ -1,0 +1,40 @@
+{
+  "name": "Booking",
+  "plural": "Bookings",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "clientId": {
+      "type": "string",
+      "required": true
+    },
+    "grillerId": {
+      "type": "string",
+      "required": true
+    },
+    "bookingDate": {
+      "type": "date",
+      "required": true
+    },
+    "reservedHours": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "client": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": "clientId",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

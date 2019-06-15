@@ -9,7 +9,8 @@ module.exports = async function(app) {
                       'Role',
                       'Client',
                       'CustomToken',
-                      'Griller'];
+                      'Griller',
+                      'Booking'];
 
     const promiseMigrate = function(model) {
       return new Promise((resolve, reject) => {
