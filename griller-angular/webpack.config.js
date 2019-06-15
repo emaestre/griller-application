@@ -1,4 +1,5 @@
 // Webpack configuration file
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/main.ts',
