@@ -15,16 +15,17 @@ export class PublishComponent implements OnInit {
   loading = false;
   submitted = false;
   error: string;
+  showMsgPostGriller = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private grillerService: GrillerService
   ) { }
-
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('currentUser'));
     this.registerForm = this.formBuilder.group({
+
       name: ['', Validators.required],
       model: ['', Validators.required],
       price: ['', Validators.required],
@@ -45,13 +46,14 @@ export class PublishComponent implements OnInit {
     let user = JSON.parse(localStorage.getItem('currentUser'));
     this.registerForm.value.grillerOwner = user.userId;
     this.registerForm.value.ownerName = user.username;
-    this.registerForm.value.ownerZipCode = user.ownerZipCode;
+    this.registerForm.value.ownerZipCode = user.zipCode;
 
     this.grillerService.create(this.registerForm.value)
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['/login'], { queryParams: { registered: true } });
+          this.showMsgPostGriller= true;
+          this.router.navigate(['/home'], { queryParams: { registered: true } });
         },
         error => {
           this.error = error;
