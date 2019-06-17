@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookingComponent } from './booking/booking.component';
 import { PublishComponent } from './publish/publish.component';
 import { GrillsComponent } from './grills/grills.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { GrillsComponent } from './grills/grills.component';
     RegisterComponent,
     BookingComponent,
     PublishComponent,
-    GrillsComponent
+    GrillsComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,9 @@ import { GrillsComponent } from './grills/grills.component';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalComponent
+  ]
 })
 export class AppModule { }

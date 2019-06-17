@@ -1,9 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs4';
 
 import { GrillerService, AuthenticationService } from '../_services'
+import { ModalComponent } from '../modal';
 
 @Component({
   selector: 'app-booking',
@@ -17,6 +19,7 @@ export class BookingComponent implements OnInit {
   selectedGriller: any;
 
   constructor(
+    private modalService: NgbModal,
     private grillerService: GrillerService,
     private chRef: ChangeDetectorRef,
     private authenticationService: AuthenticationService
@@ -41,9 +44,12 @@ export class BookingComponent implements OnInit {
         });
   }
 
-  RowSelected(griller:any){
+  openFormModal(griller:any) {
+    const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.griller = griller;
+    modalRef.componentInstance.currentUser = this.authenticationService.currentUserValue;
+    
     this.selectedGriller = griller;
-    console.log(griller)
-    console.log(this.authenticationService.currentUserValue)
+    
   }
 }
