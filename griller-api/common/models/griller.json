@@ -11,8 +11,13 @@
       "type": "string",
       "required": true
     },
-    "reservedBy": {
-      "type": "string"
+    "ownerName": {
+      "type": "string",
+      "required": true
+    },
+    "ownerZipCode": {
+      "type": "string",
+      "required": true
     },
     "name": {
       "type": "string",
@@ -23,16 +28,18 @@
       "required": true
     },
     "price": {
-      "type": "string",
+      "type": "number",
       "required": true
     },
     "location": {
       "type": "string",
       "required": true
     },
+    "description": {
+      "type": "string"
+    },
     "isAvailable": {
       "type": "boolean",
-      "required": true,
       "default": true
     }
   },

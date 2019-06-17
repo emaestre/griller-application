@@ -1,10 +1,11 @@
 <!-- nav -->
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm" *ngIf="currentUser">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom shadow-sm" *ngIf="currentUser">
   <h5 class="my-0 mr-md-auto font-weight-normal">Booking Grill</h5>
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" routerLink="/">Booking</a>
-    <a class="p-2 text-dark" href="#">Publish</a>
-    <a class="p-2 text-dark" href="#">My Grills</a>
+    <a class="p-2 text-dark" routerLink="/">Home</a>
+    <a class="p-2 text-dark" routerLink="/booking">Booking</a>
+    <a class="p-2 text-dark" routerLink="/publish">Publish</a>
+    <a class="p-2 text-dark" routerLink="/grills">My Grills</a>
   </nav>
   <a class="btn btn-outline-primary" (click)="logout()">Log out</a>
 </div>
@@ -12,18 +13,14 @@
 <!-- main content container -->
 <div class="jumbotron">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-8 offset-sm-2">
-                <router-outlet></router-outlet>                
-            </div>
+        <div>
+            <router-outlet></router-outlet>                
         </div>
     </div>
-    <div>
-         <hr>
-        <footer>
-            <div class="footer-copyright text-center py-3">&copy; Rootstack test - 2019 Copyright:
-                <a href="https://www.rootstack.com/en"> rootstack.com</a>
-            </div>
-        </footer>
-    </div>
+    <hr>
+    <footer>
+        <div class="footer-copyright text-center py-3">&copy; Rootstack test - 2019 Copyright:
+            <a href="https://www.rootstack.com/en"> rootstack.com</a>
+        </div>
+    </footer>
 </div>

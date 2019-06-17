@@ -26,7 +26,8 @@ module.exports = function(Client) {
                             ttl: loginToken.ttl,
                             created: loginToken.created,
                             userId: loginToken.userId,
-                            username: userData.username
+                            username: userData.username,
+                            zipCode: userData.zipCode
                         }
 
                         callback(null, userToken);
