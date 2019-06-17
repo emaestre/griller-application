@@ -12,4 +12,8 @@ export class GrillerService {
     getAll() {
         return this.http.get(`${AppSettings.apiUrl}/Grills`);
     }
+
+    getClientGrills(clientId){
+        return this.http.get(`${AppSettings.apiUrl}/Clients/${clientId}/grills`);
+    }
 }

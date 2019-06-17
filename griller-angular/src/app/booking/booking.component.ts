@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import 'datatables.net';
@@ -24,7 +23,6 @@ export class BookingComponent implements OnInit {
     private grillerService: GrillerService,
     private chRef: ChangeDetectorRef,
     private authenticationService: AuthenticationService,
-    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
