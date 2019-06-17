@@ -48,7 +48,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text icon ion-md-cash"></span>
         </div>
-        <input placeholder="Price" type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.price.errors }" />
+        <input placeholder="Price" type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && registerForm.controls.price.errors }" />
         <div *ngIf="submitted && registerForm.controls.price.errors" class="invalid-feedback">
             <div *ngIf="registerForm.controls.price.errors.required">Price is required</div>
             <div *ngIf="registerForm.controls.price.errors.pattern">Only numbers up to 2 decimals.</div>

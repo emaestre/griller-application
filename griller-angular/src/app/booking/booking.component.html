@@ -1,20 +1,13 @@
+<div *ngIf="showMsgBooking" class="alert alert-danger">Griller reserved!</div>
 <table id="dtBasicExample" class="table table-light table-hover table-bordered table-sm" cellspacing="0" width="100%">
   <thead>
     <tr>
-      <th class="th-sm">Name
-      </th>
-      <th class="th-sm">Model
-      </th>
-      <th class="th-sm">Price ($)
-      </th>
-      <th class="th-sm">Location
-      </th>
-      <th class="th-sm">Description
-      </th>
-      <th class="th-sm">Available
-      </th>
-      <th class="th-sm">Reserve
-      </th>
+      <th class="th-sm">Name</th>
+      <th class="th-sm">Model</th>
+      <th class="th-sm">Price ($)</th>
+      <th class="th-sm">Location</th>
+      <th class="th-sm">Description</th>
+      <th class="th-sm">Reserve</th>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +17,6 @@
         <td>{{griller.price}}</td>
         <td>{{griller.location}}</td>
         <td>{{griller.description}}</td>
-        <td>{{griller.isAvailable}}</td>
         <td> <input type="button" class="btn btn-outline-info" value="Select" (click)="openFormModal(griller)"/></td>
       </tr>
   </tbody>

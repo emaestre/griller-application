@@ -16,7 +16,6 @@ export class BookingComponent implements OnInit {
   grills: any[];
   dataTable: any;
   error: string;
-  selectedGriller: any;
 
   constructor(
     private modalService: NgbModal,
@@ -49,7 +48,10 @@ export class BookingComponent implements OnInit {
     modalRef.componentInstance.griller = griller;
     modalRef.componentInstance.currentUser = this.authenticationService.currentUserValue;
     
-    this.selectedGriller = griller;
-    
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 }

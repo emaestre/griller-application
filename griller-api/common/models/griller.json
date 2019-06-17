@@ -52,6 +52,14 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "bookings": {
+      "type": "hasMany",
+      "model": "Booking",
+      "foreignKey": "grillerId",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [
