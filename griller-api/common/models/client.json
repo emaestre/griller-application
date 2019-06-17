@@ -58,6 +58,12 @@
       "principalId": "$everyone",
       "permission": "ALLOW",
       "property": "clientLogin"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "__get__grills"
     }
   ],
   "methods": {

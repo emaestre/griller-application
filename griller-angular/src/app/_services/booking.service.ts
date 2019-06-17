@@ -6,6 +6,6 @@ import {AppSettings} from '../config';
 export class BookingService {
     constructor(private http: HttpClient) { }
     create(bookingInfo) {
-        return this.http.post(`${AppSettings.apiUrl}/Bookings`, bookingInfo);
+        return this.http.post(`${AppSettings.apiUrl}/Bookings/createReservation`, bookingInfo);
     }
 }

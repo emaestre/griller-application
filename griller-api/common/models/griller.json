@@ -37,10 +37,6 @@
     },
     "description": {
       "type": "string"
-    },
-    "isAvailable": {
-      "type": "boolean",
-      "default": true
     }
   },
   "validations": [],

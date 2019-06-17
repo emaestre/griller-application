@@ -53,8 +53,8 @@ export class PublishComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.showMsgPostGriller= true;
-          this.router.navigate(['/home'], { queryParams: { registered: true } });
+          this.showMsgPostGriller = true;
+          this.router.navigate(['/home'], { queryParams: { grillerMsg: this.showMsgPostGriller } });
         },
         error => {
           this.error = error;

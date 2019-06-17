@@ -19,7 +19,7 @@ export class ModalComponent implements OnInit {
   loading = false;
   submitted = false;
   error: string;
-  showMsgBooking  = false;
+  showMessage = false;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -51,14 +51,14 @@ export class ModalComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.showMsgBooking = true;
-          this.router.navigate(['/booking'], { queryParams: { registered: true } });
+          this.showMessage = true;
+          this.router.navigate(['/booking'], { queryParams: { showMessage: true } });
+          this.activeModal.close(data);
         },
         error => {
           this.error = error;
           this.loading = false;
         });
-    this.activeModal.close(this.modalForm.value);
   }
 
   closeModal() {

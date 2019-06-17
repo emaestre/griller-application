@@ -20,7 +20,7 @@
       "required": true
     },
     "bookingTime": {
-      "type": "time",
+      "type": "string",
       "required": true
     },
     "reservedHours": {
@@ -61,5 +61,34 @@
       "permission": "DENY"
     }
   ],
-  "methods": {}
+  "methods": {
+    "createReservation": {
+      "accepts": [
+        {
+          "arg": "bookingData",
+          "type": "object",
+          "required": true,
+          "description": "The data required by the Booking Model.",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "bookingResp",
+          "type": "object",
+          "root": true,
+          "description": "Returns err if a record if found."
+        }
+      ],
+      "description": "Search if a booking date for a griller exist, if does't exist the method create the booking.",
+      "http": [
+        {
+          "path": "/createReservation",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as $ from 'jquery';
 import 'datatables.net';
@@ -16,16 +17,17 @@ export class BookingComponent implements OnInit {
   grills: any[];
   dataTable: any;
   error: string;
+  showMsgBooking: string;
 
   constructor(
     private modalService: NgbModal,
     private grillerService: GrillerService,
     private chRef: ChangeDetectorRef,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.error = null;
     this.grillerService.getAll()
       .subscribe(
         (data: any[]) => {
@@ -51,7 +53,7 @@ export class BookingComponent implements OnInit {
     modalRef.result.then((result) => {
       console.log(result);
     }).catch((error) => {
-      console.log(error);
+        this.error = error
     });
   }
 }
