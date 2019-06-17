@@ -6,7 +6,10 @@ import {AppSettings} from '../config';
 export class GrillerService {
     constructor(private http: HttpClient) { }
     create(griller) {
-        console.log(griller)
         return this.http.post(`${AppSettings.apiUrl}/Grills`, griller);
+    }
+
+    getAll() {
+        return this.http.get(`${AppSettings.apiUrl}/Grills`);
     }
 }

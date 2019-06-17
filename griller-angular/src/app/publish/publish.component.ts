@@ -24,11 +24,12 @@ export class PublishComponent implements OnInit {
   ) { }
   ngOnInit() {
     let user = JSON.parse(localStorage.getItem('currentUser'));
-    this.registerForm = this.formBuilder.group({
+    let numericRegex = /^[0-9]+(\.[0-9]{0,2})?$/;
 
+    this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       model: ['', Validators.required],
-      price: ['', Validators.required],
+      price: ['', [Validators.required, Validators.pattern(numericRegex)]],
       location: ['', Validators.required],
       zipCode: [user.zipCode],
       description: ['']     
