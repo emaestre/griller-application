@@ -18,3 +18,9 @@ html {
 .card-deck .card {
   min-width: 220px;
 }
+
+agm-map {
+  height: 500px;
+  width: 1200px;
+  margin-bottom: 500px;
+}
