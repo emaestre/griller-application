@@ -1,0 +1,94 @@
+{
+  "name": "Booking",
+  "plural": "Bookings",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "clientId": {
+      "type": "string",
+      "required": true
+    },
+    "grillerId": {
+      "type": "string",
+      "required": true
+    },
+    "bookingDate": {
+      "type": "date",
+      "required": true
+    },
+    "bookingTime": {
+      "type": "string",
+      "required": true
+    },
+    "reservedHours": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "client": {
+      "type": "belongsTo",
+      "model": "Client",
+      "foreignKey": "clientId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "griller": {
+      "type": "belongsTo",
+      "model": "Griller",
+      "foreignKey": "grillerId",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {
+    "createReservation": {
+      "accepts": [
+        {
+          "arg": "bookingData",
+          "type": "object",
+          "required": true,
+          "description": "The data required by the Booking Model.",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "bookingResp",
+          "type": "object",
+          "root": true,
+          "description": "Returns err if a record if found."
+        }
+      ],
+      "description": "Search if a booking date for a griller exist, if does't exist the method create the booking.",
+      "http": [
+        {
+          "path": "/createReservation",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}

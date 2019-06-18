@@ -1,0 +1,108 @@
+{
+  "name": "Client",
+  "plural": "Clients",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "emailVerificationRequired": false
+  },
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "birthDate": {
+      "type": "date",
+      "required": true
+    },
+    "zipCode": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "String",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "grills": {
+      "type": "hasMany",
+      "model": "Griller",
+      "foreignKey": "grillerOwner",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "bookings": {
+      "type": "hasMany",
+      "model": "Booking",
+      "foreignKey": "clientId",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "clientLogin"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "__get__grills"
+    }
+  ],
+  "methods": {
+    "clientLogin": {
+      "accepts": [
+        {
+          "arg": "credentials",
+          "type": "object",
+          "required": true,
+          "description": "Username and password of the user.",
+          "http": {
+            "source": "body"
+          }
+        },
+        {
+          "arg": "include",
+          "type": "string",
+          "required": false,
+          "description": "Related objects to include in the response.",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "userToken",
+          "type": "object",
+          "root": true,
+          "description": "Object with the access token."
+        }
+      ],
+      "description": "Custom login remote method based in User.login ",
+      "http": [
+        {
+          "path": "/clientLogin",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}
